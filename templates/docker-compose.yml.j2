@@ -2,7 +2,7 @@
 version: '3'
 services:
   kibana:
-    image: docker.elastic.co/kibana/kibana:{{ version_tag }}
+    image: ae/kibana:{{ version_tag }}
     ports:
       - 5601:5601
     networks: [elastic]
@@ -16,7 +16,9 @@ services:
     #   - SERVER_SSL_KEY=/usr/share/kibana/config/kibana.example.org.key
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:{{ version_tag }}
+    image: ae/elasticsearch:{{ version_tag }}
+    ports:
+      - 9200:9200
     networks: [elastic]
 
 networks:

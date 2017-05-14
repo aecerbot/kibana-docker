@@ -11,8 +11,8 @@ else
 VERSION_TAG=$(ELASTIC_VERSION)
 endif
 
-ELASTIC_REGISTRY=docker.elastic.co
-VERSIONED_IMAGE=$(ELASTIC_REGISTRY)/kibana/kibana:$(VERSION_TAG)
+ELASTIC_REGISTRY=ae
+VERSIONED_IMAGE=$(ELASTIC_REGISTRY)/kibana:$(VERSION_TAG)
 
 test: lint build docker-compose.yml
 	./bin/testinfra tests
@@ -31,7 +31,7 @@ clean-test:
 	$(TEST_COMPOSE) rm --force
 
 venv: requirements.txt
-	test -d venv || virtualenv --python=python3.5 venv
+	test -d venv || virtualenv --python=python3 venv
 	pip install -r requirements.txt
 	touch venv
 
